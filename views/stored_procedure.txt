@@ -1,0 +1,120 @@
+DELIMITER $$
+CREATE PROCEDURE update_user (IN email VARCHAR(40), IN First_name VARCHAR(20), IN Last_name VARCHAR(20),IN Address VARCHAR(50),IN Phone VARCHAR(10),IN password1 VARCHAR(20),IN User_name VARCHAR(20))
+BEGIN
+    DECLARE email_exists INT;
+    SELECT COUNT(*) INTO email_exists FROM signup WHERE email_id = email AND password=password1;
+    IF email_exists > 0 THEN
+        UPDATE signup SET First_name = First_name, Last_name = Last_name, Address = Address, Phone=Phone, User_name = User_name WHERE email_id = email and password=password1;
+    END IF;
+END $$
+DELIMITER ;
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dest_id
+
+DELIMITER $$
+CREATE TRIGGER tr_set_is_active 
+BEFORE INSERT ON users
+FOR EACH ROW 
+BEGIN
+    IF NEW.age > 18 THEN
+        SET NEW.is_active = 1;
+    ELSE
+        SET NEW.is_active = 0;
+    END IF;
+END $$
+DELIMITER ;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DELIMITER $$
+CREATE PROCEDURE setdest_id(IN Dest_name1 varchar(30))
+BEGIN
+      IF Dest_name1="Nethravathi" THEN
+	  UPDATE destination SET Dest_id=1 WHERE Dest_name=Dest_name1;
+        ELSEIF Dest_name1="Gokarana Beach Trek" THEN
+          UPDATE destination SET Dest_id=2 WHERE Dest_name=Dest_name1;
+        ELSEIF Dest_name1="Skandagiri Sunrise Trek" THEN
+          UPDATE destination SET Dest_id=3 WHERE Dest_name=Dest_name1;
+        ELSEIF Dest_name1="Wayanad Trek & Camping" THEN
+          UPDATE destination SET Dest_id=4 WHERE Dest_name=Dest_name1;
+        ELSEIF Dest_name1="Narasimha parvata Trek" THEN
+          UPDATE destination SET Dest_id=5 WHERE Dest_name=Dest_name1;
+      ELSE
+	     UPDATE destination SET Dest_id=6 WHERE Dest_name="Kumta Beach Trek";
+      END IF;
+END $$
+DELIMITER ;
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    /* Define a class for the table */
+    .booking-table {
+      margin: 50px auto; /* Center the table on the page and add some margin */
+    }
+    
+    /* Define styles for the table header */
+    .booking-table thead tr th {
+      background-color: #5DADE2; /* Set the background color */
+      color: white; /* Set the text color */
+    }
+    /* Define styles for the table rows */
+    .booking-table tbody tr {
+      border-bottom: 1px solid #e0e0e0; /* Add border bottom for the rows*/
+    }
+  </style>
+</head>
+<body>
+  
+  <h1 class="center-align">Booking Information</h1>
+  <table class="highlight centered booking-table">
+    <thead>
+      <tr>
+        <th>Booking_id</th>
+        <th>Date</th>
+        <th>No_of_Members</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>31</td>
+        <td>2022-02-06</td>
+        <td>10</td>
+       <tr>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+<table class="highlight centered booking-table">
+      <thead>
+        <tr>
+          <th>Booking_id</th>
+          <th>Date</th>
+          <th>No_of_Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>31</td>
+          <td>2022-02-06</td>
+          <td>10</td>
+        </tr>
+    </tbody>
+    </table>
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+BEGIN
+    DECLARE email_exists INT;
+    SELECT COUNT(*) INTO email_exists FROM signup WHERE email_id = email AND password=password1;
+    IF email_exists > 0 THEN
+        UPDATE signup SET First_name = First_name, Last_name = Last_name, Address = Address, Phone=Phone, User_name = User_name WHERE email_id = email and password=password1;
+    END IF;
+END
